@@ -270,7 +270,7 @@ PRODUCTS.forEach(function(x){var r=RNG[x.t]||RNG[x.c];if(r){x.p=r[0];x.h=r[1]}})
 // banner.text: banner message. ends: end date like "2026-12-31T23:59:00" (shows a countdown, promo switches off by itself).
 // flash.items: {"Exact product title":[salePrice,oldPrice]}. codes: {"PANDOX10":{pct:10,until:"2026-12-31T23:59:00"}}.
 // perks: [{min:5000,text:"Free delivery"}] shows when the order reaches that amount.
-var PROMO={banner:{text:"",btn:"Shop now"},ends:"",flash:{title:"Flash sale",items:{}},codes:{},perks:[]};
+var PROMO={banner:{text:"Pandox Furniture Sale: up to 15% off",btn:"Shop now"},ends:"2026-10-10T23:59:00",flash:{title:"Flash sale",items:{"Three-seater sofa":[2550,3000],"Dresser with round LED mirror and stool":[2125,2500],"Hallway cabinet, grey with marble-look top":[2125,2500],"Accent armchair":[1275,1500]}},codes:{"PANDOX10":{pct:10,until:"2026-10-10T23:59:00"}},perks:[{min:5000,text:"Free delivery"}]};
 if(/promo-demo/.test(location.hash+location.search)){var dp=PRODUCTS.filter(function(x){return x.p>0}),di={};[0,3,12,20].forEach(function(n){var x=dp[n*1]||dp[0];di[x.t]=[Math.round(x.p*0.85/10)*10,x.p]});PROMO={banner:{text:"PREVIEW: October sale, up to 15% off",btn:"Shop now"},ends:new Date(Date.now()+3*864e5).toISOString().slice(0,19),flash:{title:"Flash sale (preview)",items:di},codes:{"DEMO10":{pct:10,until:""}},perks:[{min:5000,text:"Free delivery"}]}}
 function pend(d){return d?new Date(d).getTime():0}
 function plive(){return !PROMO.ends||Date.now()<pend(PROMO.ends)}
